@@ -80,7 +80,7 @@
 
 ---
 
-## Feature 5: Exit Program (`hlavni_menu`)
+## Feature 5: Exit Program (`main_menu`)
 
 ### Scenario 1: Valid Exit
 - **Given** the user selects option `4`
