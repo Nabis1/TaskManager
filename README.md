@@ -19,7 +19,6 @@ The Task Manager is a simple command-line application for managing tasks. It all
 
    ```bash
    git clone https://github.com/Nabis1/TaskManager.git
-   Running the Application
    ```
 2. To run the application, execute the following command:
    ```bash
