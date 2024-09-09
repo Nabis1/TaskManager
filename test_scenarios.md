@@ -1,6 +1,6 @@
 # Test Scenarios for Task Manager Project
 
-## Feature 1: Main Menu (`hlavni_menu`)
+## Feature 1: Main Menu (`main_menu`)
 
 ### Scenario 1: Valid User Input
 - **Given** the user starts the task manager
@@ -18,7 +18,7 @@
 
 ---
 
-## Feature 2: Add Task (`pridat_ukol`)
+## Feature 2: Add Task (`add_task`)
 
 ### Scenario 1: Valid Task Addition
 - **Given** the user selects option `1` to add a task
@@ -42,7 +42,7 @@
 
 ---
 
-## Feature 3: View Tasks (`zobrazit_ukoly`)
+## Feature 3: View Tasks (`veiw_task`)
 
 ### Scenario 1: Viewing Non-Empty Task List
 - **Given** there are tasks in the list
@@ -56,7 +56,7 @@
 
 ---
 
-## Feature 4: Remove Task (`odstranit_ukol`)
+## Feature 4: Remove Task (`remove_task`)
 
 ### Scenario 1: Valid Task Deletion
 - **Given** there are tasks in the list
