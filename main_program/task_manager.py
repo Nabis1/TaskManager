@@ -1,3 +1,4 @@
+import json
 tasks = []
 
 def main_menu():
@@ -6,7 +7,9 @@ def main_menu():
         print("1. Add a new task")
         print("2. View all tasks")
         print("3. Remove a task")
-        print("4. Exit the program")
+        print("4. Save tasks")
+        print("5. Load tasks")
+        print("6. Exit the program")
         choice = input("Choose an option (1-4): ")
 
         if choice == '1':
@@ -16,6 +19,10 @@ def main_menu():
         elif choice == '3':
             remove_task()
         elif choice == '4':
+            save_tasks()
+        elif choice == '5':
+            load_tasks()
+        elif choice == '5':
             print("Exiting the program.")
             break
         else:
@@ -59,6 +66,21 @@ def remove_task():
                 print("Invalid task number.")
         except ValueError:
             print("Invalid input, please enter a task number.")
+def save_tasks():
+    """Save tasks to a file."""
+    with open("tasks.json", "w") as f:
+        json.dump(tasks, f)
+
+def load_tasks():
+    """Load tasks from a file."""
+    try:
+        with open("tasks.json", "r") as f:
+            global tasks
+            tasks = json.load(f)
+    except FileNotFoundError:
+        print("No saved tasks found. Starting with an empty list.")
+    except json.JSONDecodeError:
+        print("Error loading tasks. Starting with an empty list.")
 
 if __name__ == "__main__":
     main_menu()
