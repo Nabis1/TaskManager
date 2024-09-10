@@ -7,10 +7,11 @@ def main_menu():
         print("1. Add a new task")
         print("2. View all tasks")
         print("3. Remove a task")
-        print("4. Save tasks")
-        print("5. Load tasks")
-        print("6. Exit the program")
-        choice = input("Choose an option (1-6): ")
+        print("4. Edit task")
+        print("5. Save tasks")
+        print("6. Load tasks")
+        print("7. Exit the program")
+        choice = input("Choose an option (1-7): ")
 
         if choice == '1':
             add_task()
@@ -19,10 +20,12 @@ def main_menu():
         elif choice == '3':
             remove_task()
         elif choice == '4':
-            save_tasks()
+            edit_task()
         elif choice == '5':
-            load_tasks()
+            save_tasks()
         elif choice == '6':
+            load_tasks()
+        elif choice == '7':
             print("Exiting the program.")
             break
         else:
@@ -53,6 +56,36 @@ def view_tasks():
         print("\nTask list:")
         for index, task in enumerate(tasks, start=1):
             print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
+
+def edit_task():
+    view_tasks()
+    if not tasks:
+        print("No tasks available to edit.")
+        return
+    
+    try:
+        task_number = int(input("Enter the task number you want to edit: "))
+        if 1 <= task_number <= len(tasks):
+            task = tasks[task_number - 1]
+            print(f"Editing task: {task['title']}")
+            
+            new_title = input("Enter the new title (leave empty to keep current): ").strip()
+            if new_title:
+                task['title'] = new_title
+            
+            new_description = input("Enter the new description (leave empty to keep current): ").strip()
+            if new_description:
+                task['description'] = new_description
+            
+            new_deadline = input("Enter the new deadline (DD.MM.YYYY) (leave empty to keep current): ").strip()
+            if new_deadline:
+                task['deadline'] = new_deadline
+            
+            print(f"Task updated to: {task['title']} - {task['description']} (Deadline: {task['deadline']})")
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Invalid input, please enter a number.")
 
 def remove_task():
     view_tasks()
