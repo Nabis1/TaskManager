@@ -31,7 +31,11 @@ def add_task():
         if not description:
             print("Task description cannot be empty.")
             continue
-        tasks.append({'title': title, 'description': description})
+        deadline = input("Enter the task deadline: ")
+        if not deadline:
+            print("Task deadline cannot be empty")
+            continue
+        tasks.append({'title': title, 'description': description, 'deadline': deadline})
         print(f"Task '{title}' has been added.")
         break
 
@@ -41,7 +45,7 @@ def view_tasks():
     else:
         print("\nTask list:")
         for index, task in enumerate(tasks, start=1):
-            print(f"{index}. {task['title']} - {task['description']}")
+            print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
 
 def remove_task():
     view_tasks()
