@@ -1,5 +1,7 @@
 import json
+
 tasks = []
+
 
 def main_menu():
     while True:
@@ -13,23 +15,25 @@ def main_menu():
         print("7. Exit the program")
         choice = input("Choose an option (1-7): ")
 
-        if choice == '1':
-            add_task()
-        elif choice == '2':
-            view_tasks()
-        elif choice == '3':
-            remove_task()
-        elif choice == '4':
-            edit_task()
-        elif choice == '5':
-            save_tasks()
-        elif choice == '6':
-            load_tasks()
-        elif choice == '7':
-            print("Exiting the program.")
-            break
-        else:
-            print("Invalid choice, please try again.")
+        match choice:
+            case "1":
+                add_task()
+            case "2":
+                view_tasks()
+            case "3":
+                remove_task()
+            case "4":
+                edit_task()
+            case "5":
+                save_tasks()
+            case "6":
+                load_tasks()
+            case "7":
+                print("Exiting the program.")
+                break
+            case _:
+                print("Invalid choice, please try again.")
+
 
 def add_task():
     while True:
@@ -45,9 +49,10 @@ def add_task():
         if not deadline:
             print("Task deadline cannot be empty")
             continue
-        tasks.append({'title': title, 'description': description, 'deadline': deadline})
+        tasks.append({"title": title, "description": description, "deadline": deadline})
         print(f"Task '{title}' has been added.")
         break
+
 
 def view_tasks():
     if not tasks:
@@ -55,7 +60,10 @@ def view_tasks():
     else:
         print("\nTask list:")
         for index, task in enumerate(tasks, start=1):
-            print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
+            print(
+                f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}"
+            )
+
 
 def edit_task():
     if not tasks:
@@ -75,17 +83,24 @@ def edit_task():
     task = tasks[index - 1]
 
     title = input(f"Enter new title (leave empty to keep '{task['title']}'): ").strip()
-    description = input(f"Enter new description (leave empty to keep '{task['description']}'): ").strip()
-    deadline = input(f"Enter new deadline (leave empty to keep '{task['deadline']}'): ").strip()
+    description = input(
+        f"Enter new description (leave empty to keep '{task['description']}'): "
+    ).strip()
+    deadline = input(
+        f"Enter new deadline (leave empty to keep '{task['deadline']}'): "
+    ).strip()
 
     if title:
-        task['title'] = title
+        task["title"] = title
     if description:
-        task['description'] = description
+        task["description"] = description
     if deadline:
-        task['deadline'] = deadline
+        task["deadline"] = deadline
 
-    print(f"Task updated to: {task['title']} - {task['description']} - Deadline: {task['deadline']}")
+    print(
+        f"Task updated to: {task['title']} - {task['description']} - Deadline: {task['deadline']}"
+    )
+
 
 def remove_task():
     view_tasks()
@@ -99,10 +114,13 @@ def remove_task():
                 print("Invalid task number.")
         except ValueError:
             print("Invalid input, please enter a task number.")
+
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
     print("Tasks have been saved to tasks.json.")
+
 
 def load_tasks():
     global tasks
@@ -112,6 +130,7 @@ def load_tasks():
         print("Tasks have been loaded from tasks.json.")
     except FileNotFoundError:
         print("No saved tasks found.")
+
 
 if __name__ == "__main__":
     main_menu()
