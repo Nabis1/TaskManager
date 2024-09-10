@@ -60,9 +60,8 @@ def view_tasks():
     else:
         print("\nTask list:")
         for index, task in enumerate(tasks, start=1):
-            print(
-                f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}"
-            )
+            print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
+            
 
 
 def edit_task():
