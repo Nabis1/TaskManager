@@ -6,9 +6,9 @@
 - **Given** the user starts the task manager
 - **When** the user selects a valid option (1-4)
 - **Then** the corresponding function should be called:
-  - Option `1`: Calls `pridat_ukol()`.
-  - Option `2`: Calls `zobrazit_ukoly()`.
-  - Option `3`: Calls `odstranit_ukol()`.
+  - Option `1`: Calls `add_task()`.
+  - Option `2`: Calls `view_task()`.
+  - Option `3`: Calls `remove_task()`.
   - Option `4`: Exits the program.
 
 ### Scenario 2: Invalid User Input
