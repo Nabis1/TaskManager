@@ -33,8 +33,8 @@ class TestTaskManager(unittest.TestCase):
         sys.stdout = captured_output
         view_tasks()
         sys.stdout = sys.__stdout__
-        self.assertIn("1. Task 1 - Description for task 1", captured_output.getvalue())
-        self.assertIn("2. Task 2 - Description for task 2", captured_output.getvalue())
+        self.assertIn("1. Task 1 - Description for task 1 - Deadline: Deadline for task 1", captured_output.getvalue())
+        self.assertIn("2. Task 2 - Description for task 2 - Deadline: Deadline for task 2", captured_output.getvalue())
 
     @patch('builtins.input', side_effect=['Task 1', 'Description for task 1', 'Deadline for task 1', 'Task 2', 'Description for task 2', 'Deadline for task 2', '1'])
     def test_remove_task_valid(self, mock_input):

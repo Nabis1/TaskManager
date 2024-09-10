@@ -31,7 +31,7 @@ def add_task():
         if not description:
             print("Task description cannot be empty.")
             continue
-        deadline = input("Enter the task deadline: ")
+        deadline = input("Enter the task deadline(DD.MM.YYYY): ")
         if not deadline:
             print("Task deadline cannot be empty")
             continue
