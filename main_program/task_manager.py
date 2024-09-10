@@ -10,7 +10,7 @@ def main_menu():
         print("4. Save tasks")
         print("5. Load tasks")
         print("6. Exit the program")
-        choice = input("Choose an option (1-4): ")
+        choice = input("Choose an option (1-6): ")
 
         if choice == '1':
             add_task()
@@ -22,7 +22,7 @@ def main_menu():
             save_tasks()
         elif choice == '5':
             load_tasks()
-        elif choice == '5':
+        elif choice == '6':
             print("Exiting the program.")
             break
         else:
