@@ -67,20 +67,18 @@ def remove_task():
         except ValueError:
             print("Invalid input, please enter a task number.")
 def save_tasks():
-    """Save tasks to a file."""
-    with open("tasks.json", "w") as f:
-        json.dump(tasks, f)
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file, indent=4)
+    print("Tasks have been saved to tasks.json.")
 
 def load_tasks():
-    """Load tasks from a file."""
+    global tasks
     try:
-        with open("tasks.json", "r") as f:
-            global tasks
-            tasks = json.load(f)
+        with open("tasks.json", "r") as file:
+            tasks = json.load(file)
+        print("Tasks have been loaded from tasks.json.")
     except FileNotFoundError:
-        print("No saved tasks found. Starting with an empty list.")
-    except json.JSONDecodeError:
-        print("Error loading tasks. Starting with an empty list.")
+        print("No saved tasks found.")
 
 if __name__ == "__main__":
     main_menu()
