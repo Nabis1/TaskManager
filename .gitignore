@@ -1,0 +1,8 @@
+
+main_program/__pycache__/
+
+tests_pytest/__pycache__/
+
+tests_unittest/__pycache__/
+
+**/__pycache__/
