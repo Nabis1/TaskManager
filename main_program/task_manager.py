@@ -58,34 +58,34 @@ def view_tasks():
             print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
 
 def edit_task():
-    view_tasks()
     if not tasks:
         print("No tasks available to edit.")
         return
-    
-    try:
-        task_number = int(input("Enter the task number you want to edit: "))
-        if 1 <= task_number <= len(tasks):
-            task = tasks[task_number - 1]
-            print(f"Editing task: {task['title']}")
-            
-            new_title = input("Enter the new title (leave empty to keep current): ").strip()
-            if new_title:
-                task['title'] = new_title
-            
-            new_description = input("Enter the new description (leave empty to keep current): ").strip()
-            if new_description:
-                task['description'] = new_description
-            
-            new_deadline = input("Enter the new deadline (DD.MM.YYYY) (leave empty to keep current): ").strip()
-            if new_deadline:
-                task['deadline'] = new_deadline
-            
-            print(f"Task updated to: {task['title']} - {task['description']} (Deadline: {task['deadline']})")
-        else:
-            print("Invalid task number.")
-    except ValueError:
-        print("Invalid input, please enter a number.")
+
+    while True:
+        try:
+            index = int(input("Enter the task number to edit: "))
+            if 1 <= index <= len(tasks):
+                break
+            else:
+                print("Invalid task number. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    task = tasks[index - 1]
+
+    title = input(f"Enter new title (leave empty to keep '{task['title']}'): ").strip()
+    description = input(f"Enter new description (leave empty to keep '{task['description']}'): ").strip()
+    deadline = input(f"Enter new deadline (leave empty to keep '{task['deadline']}'): ").strip()
+
+    if title:
+        task['title'] = title
+    if description:
+        task['description'] = description
+    if deadline:
+        task['deadline'] = deadline
+
+    print(f"Task updated to: {task['title']} - {task['description']} - Deadline: {task['deadline']}")
 
 def remove_task():
     view_tasks()
