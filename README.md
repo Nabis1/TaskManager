@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Task Manager is a simple command-line application for managing tasks. It allows users to add, view, and remove tasks through a console interface. This project demonstrates basic operations with task management and includes unit tests using both `unittest` and `pytest`.
+The Task Manager is a simple command-line application for managing tasks. It allows users to add, view, edit, save, load and remove tasks through a console interface. This project demonstrates basic operations with task management and includes unit tests using both `unittest` and `pytest`.
 
 ## Features
 
@@ -10,6 +10,8 @@ The Task Manager is a simple command-line application for managing tasks. It all
 - **View All Tasks**: Displays all tasks with their titles and descriptions.
 - **Remove a Task**: Enables the user to remove a task by specifying its number in the list.
 - **Exit the Program**: Ends the program execution.
+- **Edit a Task**: Enables the user to edit a task which is already created.
+- **Save & Load**:  Enables the user to Save tasks and Load it from directory.
 
 ## Getting Started
 
@@ -46,6 +48,9 @@ This file contains the main implementation of the Task Manager with the followin
 - add_task(): Adds a new task to the list.
 - view_tasks(): Displays all tasks.
 - remove_task(): Removes a task by its number.
+- edit_task(): Edit created tasks.
+- save_tasks(): Save created tasks.
+- load_tasks(): Load tasks from directory.
 
   
 Contains tests for the Task Manager using pytest. It verifies the functionality of adding, viewing, and removing tasks.
