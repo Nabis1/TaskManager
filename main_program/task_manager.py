@@ -49,7 +49,12 @@ def add_task():
         if not deadline:
             print("Task deadline cannot be empty")
             continue
-        tasks.append({"title": title, "description": description, "deadline": deadline})
+        priority = input("Enter task priority (high, medium, low): ").strip().lower()
+        if priority not in ["high", "medium", "low"]:
+            print("Invalid priority. Please enter 'high', 'medium', or 'low'.")
+            continue
+
+        tasks.append({"title": title, "description": description, "deadline": deadline, "priority": priority })
         print(f"Task '{title}' has been added.")
         break
 
@@ -59,8 +64,9 @@ def view_tasks():
         print("Task list is empty.")
     else:
         print("\nTask list:")
-        for index, task in enumerate(tasks, start=1):
-            print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']}")
+        sorted_tasks = sorted(tasks, key=lambda x: x['priority'])
+        for index, task in enumerate(sorted_tasks, start=1):
+            print(f"{index}. {task['title']} - {task['description']} - Deadline: {task['deadline']} - Priority: {task['priority']}")
             
 
 
