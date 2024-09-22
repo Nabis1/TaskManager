@@ -4,16 +4,19 @@
 
 ### Scenario 1: Valid User Input
 - **Given** the user starts the task manager
-- **When** the user selects a valid option (1-4)
+- **When** the user selects a valid option (1-7)
 - **Then** the corresponding function should be called:
   - Option `1`: Calls `add_task()`.
   - Option `2`: Calls `view_task()`.
   - Option `3`: Calls `remove_task()`.
-  - Option `4`: Exits the program.
+  - Option `4`: Calls `edit_task()`.
+  - Option `5`: Calls `save_task()`.
+  - Option `6`: Calls `load_task()`.
+  - Option `7`: Exits the program.
 
 ### Scenario 2: Invalid User Input
 - **Given** the user is in the main menu
-- **When** the user selects an invalid option (e.g., `0`, `5`, `abc`)
+- **When** the user selects an invalid option (e.g., `0`, `8`, `abc`)
 - **Then** the program should display an error message and re-display the menu.
 
 ---
@@ -80,12 +83,59 @@
 
 ---
 
-## Feature 5: Exit Program (`main_menu`)
+## Feature 5: Edit Task (`edit_task`)
+
+### Scenario 1: Valid Task Edit
+- **Given** the user selects option `4` to edit a task
+- **When** the user provides a valid task index and updates the task details
+- **Then** the task should be updated in the list and a success message should be displayed.
+
+### Scenario 2: Invalid Task Index
+- **Given** the user selects option `4` to edit a task
+- **When** the user provides an invalid task index (e.g., index out of range)
+- **Then** the program should display an error message and prompt the user to re-enter the index.
+
+---
+
+## Feature 6: Save Tasks (`save_tasks`)
+
+### Scenario 1: Successful Task Saving
+- **Given** the user selects option `5` to save tasks
+- **When** there are tasks in the list
+- **Then** the tasks should be saved to a file and a success message displayed.
+
+## Scenario 2: No Tasks to Save
+- **Given** the user selects option `5` to save tasks
+- **When** the task list is empty
+- **Then** the program should display a message indicating there are no tasks to save.
+
+---
+
+## Feature 7: Load Tasks (`load_tasks`)
+
+### Scenario 1: Successful Task Loading
+- **Given** the user selects option `6` to load tasks
+- **When** a valid file with tasks is present
+- **Then** the tasks should be loaded from the file and displayed in the task list.
+
+### Scenario 2: No Tasks in File
+- **Given** the user selects option `6` to load tasks
+- **When** the file is empty or doesn't contain valid tasks
+- **Then** the program should display a message indicating no tasks were loaded.
+
+### Scenario 3: File Not Found
+- **Given** the user selects option `6` to load tasks
+- **When** the file is not found
+- **Then** the program should display an error message indicating the file could not be located.
+
+---
+
+## Feature 8: Exit Program (`main_menu`)
 
 ### Scenario 1: Valid Exit
-- **Given** the user selects option `4`
+- **Given** the user selects option `7`
 - **When** the user confirms their choice
-- **Then** the program should display "Konec programu" and exit cleanly.
+- **Then** the program should display "Exiting the program" and exit cleanly.
 
 ### Scenario 2: Unexpected Exit Attempt
 - **Given** the user is in the middle of adding or removing a task
