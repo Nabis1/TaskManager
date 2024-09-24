@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 tasks = []
 
@@ -45,14 +46,23 @@ def add_task():
         if not description:
             print("Task description cannot be empty.")
             continue
-        deadline = input("Enter the task deadline(DD.MM.YYYY): ")
-        if not deadline:
-            print("Task deadline cannot be empty")
-            continue
-        priority = input("Enter task priority (high, medium, low): ").strip().lower()
-        if priority not in ["high", "medium", "low"]:
-            print("Invalid priority. Please enter 'high', 'medium', or 'low'.")
-            continue
+        while True:
+            deadline = input("Enter the task deadline (DD.MM.YYYY): ").strip()
+            if not deadline:
+                print("Task deadline cannot be empty.")
+                continue
+            try:
+                valid_date = datetime.strptime(deadline, "%d.%m.%Y")
+                deadline = valid_date.strftime("%d.%m.%Y")  
+                break  
+            except ValueError:
+                print("Invalid date format. Please enter the date in DD.MM.YYYY format.")
+        while True:
+            priority = input("Enter task priority (high, medium, low): ").strip().lower()
+            if priority not in ["high", "medium", "low"]:
+                print("Invalid priority. Please enter 'high', 'medium', or 'low'.")
+                continue
+            break  
 
         tasks.append({"title": title, "description": description, "deadline": deadline, "priority": priority })
         print(f"Task '{title}' has been added.")
@@ -71,6 +81,7 @@ def view_tasks():
 
 
 def edit_task():
+    view_tasks()
     if not tasks:
         print("No tasks available to edit.")
         return
