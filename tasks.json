@@ -2,6 +2,7 @@
     {
         "title": "Car",
         "description": "Buy new front bumper",
-        "deadline": "24.12.2024"
+        "deadline": "24.12.2024",
+        "priority": "low"
     }
 ]
